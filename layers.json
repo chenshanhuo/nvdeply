@@ -1,0 +1,2556 @@
+{"Layers": [{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to Conv_6 + Relu_7",
+  "LayerType": "Reformat",
+  "Inputs": [
+  {
+    "Name": "input",
+    "Location": "Device",
+    "Dimensions": [1,3,520,520],
+    "Format/Datatype": "Row major linear FP32"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to Conv_6 + Relu_7",
+    "Location": "Device",
+    "Dimensions": [1,3,520,520],
+    "Format/Datatype": "Row major linear FP16 format"
+  }],
+  "ParameterType": "Reformat",
+  "Origin": "REFORMAT",
+  "TacticValue": "0x00000000000003e8"
+},{
+  "Name": "Conv_6 + Relu_7",
+  "LayerType": "CudnnConvolution",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to Conv_6 + Relu_7",
+    "Location": "Device",
+    "Dimensions": [1,3,520,520],
+    "Format/Datatype": "Row major linear FP16 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "343",
+    "Location": "Device",
+    "Dimensions": [1,64,260,260],
+    "Format/Datatype": "Row major linear FP16 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [7,7],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [3,3],
+  "PostPadding": [3,3],
+  "Stride": [2,2],
+  "Dilation": [1,1],
+  "OutMaps": 64,
+  "Groups": 1,
+  "Weights": {"Type": "Half", "Count": 9408},
+  "Bias": {"Type": "Half", "Count": 64},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "TacticValue": "0x0000000000000001"
+},{
+  "Name": "MaxPool_8",
+  "LayerType": "CudnnPooling",
+  "Inputs": [
+  {
+    "Name": "343",
+    "Location": "Device",
+    "Dimensions": [1,64,260,260],
+    "Format/Datatype": "Row major linear FP16 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Output Tensor 0 to MaxPool_8",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Row major linear FP16 format"
+  }],
+  "ParameterType": "Pooling",
+  "PoolingType": "MAX",
+  "WindowSize": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [2,2],
+  "BlendFactor": 0,
+  "AverageCountExcludesPadding": 1,
+  "TacticValue": "0xffffffffffffffff"
+},{
+  "Name": "Reformatting CopyNode for Output Tensor 0 to MaxPool_8",
+  "LayerType": "Reformat",
+  "Inputs": [
+  {
+    "Name": "Reformatted Output Tensor 0 to MaxPool_8",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Row major linear FP16 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "344",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Row major Int8 format"
+  }],
+  "ParameterType": "Reformat",
+  "Origin": "REFORMAT",
+  "TacticValue": "0x00000000000003e8"
+},{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to Conv_9 + Relu_10",
+  "LayerType": "Reformat",
+  "Inputs": [
+  {
+    "Name": "344",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to Conv_9 + Relu_10",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Row major linear FP16 format"
+  }],
+  "ParameterType": "Reformat",
+  "Origin": "REFORMAT",
+  "TacticValue": "0x00000000000003e8"
+},{
+  "Name": "Conv_9 + Relu_10",
+  "LayerType": "CudnnConvolution",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to Conv_9 + Relu_10",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Row major linear FP16 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "347",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Row major linear FP16 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 64,
+  "Groups": 1,
+  "Weights": {"Type": "Half", "Count": 4096},
+  "Bias": {"Type": "Half", "Count": 64},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "TacticValue": "0x0000000000000001"
+},{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to Conv_11 + Relu_12",
+  "LayerType": "Reformat",
+  "Inputs": [
+  {
+    "Name": "347",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Row major linear FP16 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to Conv_11 + Relu_12",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Reformat",
+  "Origin": "REFORMAT",
+  "TacticValue": "0x00000000000003e8"
+},{
+  "Name": "Conv_11 + Relu_12",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to Conv_11 + Relu_12",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "350",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 64,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 36864},
+  "Bias": {"Type": "Float", "Count": 64},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_small_nn_v1",
+  "TacticValue": "0x959d53b45d11ebf9"
+},{
+  "Name": "Conv_13",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "350",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "556",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 16384},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "NONE",
+  "HasBias": 1,
+  "HasReLU": 0,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Reformatting CopyNode for Input Tensor 0 to Conv_14 + Add_15 + Relu_16",
+  "LayerType": "Reformat",
+  "Inputs": [
+  {
+    "Name": "344",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to Conv_14 + Add_15 + Relu_16",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Reformat",
+  "Origin": "REFORMAT",
+  "TacticValue": "0x0000000000000000"
+},{
+  "Name": "Conv_14 + Add_15 + Relu_16",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "Reformatted Input Tensor 0 to Conv_14 + Add_15 + Relu_16",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "556",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "356",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 16384},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Conv_17 + Relu_18",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "356",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "359",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 64,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 16384},
+  "Bias": {"Type": "Float", "Count": 64},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Conv_19 + Relu_20",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "359",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "362",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 64,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 36864},
+  "Bias": {"Type": "Float", "Count": 64},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_small_nn_v1",
+  "TacticValue": "0x959d53b45d11ebf9"
+},{
+  "Name": "Conv_21 + Add_22 + Relu_23",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "362",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "356",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "366",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 16384},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Conv_24 + Relu_25",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "366",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "369",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 64,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 16384},
+  "Bias": {"Type": "Float", "Count": 64},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Conv_26 + Relu_27",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "369",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "372",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 64,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 36864},
+  "Bias": {"Type": "Float", "Count": 64},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_small_nn_v1",
+  "TacticValue": "0x959d53b45d11ebf9"
+},{
+  "Name": "Conv_28 + Add_29 + Relu_30",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "372",
+    "Location": "Device",
+    "Dimensions": [1,64,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "366",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "376",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 16384},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Conv_31 + Relu_32",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "376",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "379",
+    "Location": "Device",
+    "Dimensions": [1,128,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 128,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 32768},
+  "Bias": {"Type": "Float", "Count": 128},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_33 + Relu_34",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "379",
+    "Location": "Device",
+    "Dimensions": [1,128,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "382",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [2,2],
+  "Dilation": [1,1],
+  "OutMaps": 128,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 147456},
+  "Bias": {"Type": "Float", "Count": 128},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_35",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "382",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "586",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 65536},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "NONE",
+  "HasBias": 1,
+  "HasReLU": 0,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_small_nn_v1",
+  "TacticValue": "0x959d53b45d11ebf9"
+},{
+  "Name": "Conv_36 + Add_37 + Relu_38",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "376",
+    "Location": "Device",
+    "Dimensions": [1,256,130,130],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "586",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "388",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [2,2],
+  "Dilation": [1,1],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 131072},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Conv_39 + Relu_40",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "388",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "391",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 128,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 65536},
+  "Bias": {"Type": "Float", "Count": 128},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_41 + Relu_42",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "391",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "394",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 128,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 147456},
+  "Bias": {"Type": "Float", "Count": 128},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_43 + Add_44 + Relu_45",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "394",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "388",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "398",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 65536},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Conv_46 + Relu_47",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "398",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "401",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 128,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 65536},
+  "Bias": {"Type": "Float", "Count": 128},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_48 + Relu_49",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "401",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "404",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 128,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 147456},
+  "Bias": {"Type": "Float", "Count": 128},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_50 + Add_51 + Relu_52",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "404",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "398",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "408",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 65536},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Conv_53 + Relu_54",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "408",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "411",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 128,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 65536},
+  "Bias": {"Type": "Float", "Count": 128},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_55 + Relu_56",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "411",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "414",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 128,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 147456},
+  "Bias": {"Type": "Float", "Count": 128},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_57 + Add_58 + Relu_59",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "414",
+    "Location": "Device",
+    "Dimensions": [1,128,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "408",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "418",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 65536},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Conv_60 + Relu_61",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "418",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "421",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 131072},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_62 + Relu_63",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "421",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "424",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 589824},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_64",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "424",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "625",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 1024,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 1024},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "NONE",
+  "HasBias": 1,
+  "HasReLU": 0,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_65 + Add_66 + Relu_67",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "418",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "625",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "430",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 1024,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 524288},
+  "Bias": {"Type": "Float", "Count": 1024},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_68 + Relu_69",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "430",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "433",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_70 + Relu_71",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "433",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "436",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [2,2],
+  "PostPadding": [2,2],
+  "Stride": [1,1],
+  "Dilation": [2,2],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 589824},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_72 + Add_73 + Relu_74",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "436",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "430",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "440",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 1024,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 1024},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_75 + Relu_76",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "440",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "443",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_77 + Relu_78",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "443",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "446",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [2,2],
+  "PostPadding": [2,2],
+  "Stride": [1,1],
+  "Dilation": [2,2],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 589824},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_79 + Add_80 + Relu_81",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "446",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "440",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "450",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 1024,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 1024},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_82 + Relu_83",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "450",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "453",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_84 + Relu_85",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "453",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "456",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [2,2],
+  "PostPadding": [2,2],
+  "Stride": [1,1],
+  "Dilation": [2,2],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 589824},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_86 + Add_87 + Relu_88",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "456",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "450",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "460",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 1024,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 1024},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_89 + Relu_90",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "460",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "463",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_91 + Relu_92",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "463",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "466",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [2,2],
+  "PostPadding": [2,2],
+  "Stride": [1,1],
+  "Dilation": [2,2],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 589824},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_93 + Add_94 + Relu_95",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "466",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "460",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "470",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 1024,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 1024},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_96 + Relu_97",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "470",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "473",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_98 + Relu_99",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "473",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "476",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [2,2],
+  "PostPadding": [2,2],
+  "Stride": [1,1],
+  "Dilation": [2,2],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 589824},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_100 + Add_101 + Relu_102",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "476",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "470",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "480",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 1024,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 262144},
+  "Bias": {"Type": "Float", "Count": 1024},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_103 + Relu_104",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "480",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "483",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 524288},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x64_relu_interior_nn_v1",
+  "TacticValue": "0xc60aa554281a27f3"
+},{
+  "Name": "Conv_141 + Relu_142",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "480",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "532",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 256,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 2359296},
+  "Bias": {"Type": "Float", "Count": 256},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_105 + Relu_106",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "483",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "486",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [2,2],
+  "PostPadding": [2,2],
+  "Stride": [1,1],
+  "Dilation": [2,2],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 2359296},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_143",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "532",
+    "Location": "Device",
+    "Dimensions": [1,256,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "533",
+    "Location": "Device",
+    "Dimensions": [1,21,65,65],
+    "Format/Datatype": "Row major linear FP32"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 21,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 5376},
+  "Bias": {"Type": "Float", "Count": 21},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "NONE",
+  "HasBias": 1,
+  "HasReLU": 0,
+  "TacticName": "maxwell_fp32_icudnn_int8x4_128x32_relu_interior_nn_v1",
+  "TacticValue": "0x8bae26e8bc714f38"
+},{
+  "Name": "Conv_107",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "486",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "682",
+    "Location": "Device",
+    "Dimensions": [1,2048,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 2048,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 1048576},
+  "Bias": {"Type": "Float", "Count": 2048},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "NONE",
+  "HasBias": 1,
+  "HasReLU": 0,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_108 + Add_109 + Relu_110",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "480",
+    "Location": "Device",
+    "Dimensions": [1,1024,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "682",
+    "Location": "Device",
+    "Dimensions": [1,2048,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "492",
+    "Location": "Device",
+    "Dimensions": [1,2048,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 2048,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 2097152},
+  "Bias": {"Type": "Float", "Count": 2048},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Resize_156",
+  "LayerType": "Resize",
+  "Inputs": [
+  {
+    "Name": "533",
+    "Location": "Device",
+    "Dimensions": [1,21,65,65],
+    "Format/Datatype": "Row major linear FP32"
+  }],
+  "Outputs": [
+  {
+    "Name": "aux",
+    "Location": "Device",
+    "Dimensions": [1,21,520,520],
+    "Format/Datatype": "Row major linear FP32"
+  }],
+  "ParameterType": "Resize",
+  "ResizeMode": "LINEAR",
+  "ResizeScales": [0, 0, 0, 0, 0, 0, 0, 0],
+  "ExcludeOutside": 0,
+  "CubicCoeff": -0.75,
+  "CoordTransform": "kHALF_PIXEL",
+  "ResizeSelector": "kUPPER",
+  "NNRounding": "kFLOOR",
+  "TacticValue": "0x0000000000000001"
+},{
+  "Name": "Conv_111 + Relu_112",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "492",
+    "Location": "Device",
+    "Dimensions": [1,2048,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "495",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 1048576},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_113 + Relu_114",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "495",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "498",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [4,4],
+  "PostPadding": [4,4],
+  "Stride": [1,1],
+  "Dilation": [4,4],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 2359296},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_115 + Add_116 + Relu_117",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "498",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "492",
+    "Location": "Device",
+    "Dimensions": [1,2048,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "502",
+    "Location": "Device",
+    "Dimensions": [1,2048,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 2048,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 1048576},
+  "Bias": {"Type": "Float", "Count": 2048},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_118 + Relu_119",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "502",
+    "Location": "Device",
+    "Dimensions": [1,2048,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "505",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 1048576},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_120 + Relu_121",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "505",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "508",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [4,4],
+  "PostPadding": [4,4],
+  "Stride": [1,1],
+  "Dilation": [4,4],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 2359296},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_122 + Add_123 + Relu_124",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "508",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  },
+  {
+    "Name": "502",
+    "Location": "Device",
+    "Dimensions": [1,2048,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "512",
+    "Location": "Device",
+    "Dimensions": [1,2048,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 2048,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 1048576},
+  "Bias": {"Type": "Float", "Count": 2048},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 1,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_interior_nn_v1",
+  "TacticValue": "0x037bbbcfc9346d65"
+},{
+  "Name": "Conv_125 + Relu_126",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "512",
+    "Location": "Device",
+    "Dimensions": [1,2048,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "515",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [3,3],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [1,1],
+  "PostPadding": [1,1],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 512,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 9437184},
+  "Bias": {"Type": "Float", "Count": 512},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "RELU",
+  "HasBias": 1,
+  "HasReLU": 1,
+  "TacticName": "maxwell_int8x4_icudnn_int8x4_128x128_relu_small_nn_v1",
+  "TacticValue": "0xd98337c69ec6872b"
+},{
+  "Name": "Conv_127",
+  "LayerType": "CaskConvolution",
+  "Inputs": [
+  {
+    "Name": "515",
+    "Location": "Device",
+    "Dimensions": [1,512,65,65],
+    "Format/Datatype": "Four wide channel vectorized row major Int8 format"
+  }],
+  "Outputs": [
+  {
+    "Name": "516",
+    "Location": "Device",
+    "Dimensions": [1,21,65,65],
+    "Format/Datatype": "Row major linear FP32"
+  }],
+  "ParameterType": "Convolution",
+  "Kernel": [1,1],
+  "PaddingMode": "kEXPLICIT_ROUND_DOWN",
+  "PrePadding": [0,0],
+  "PostPadding": [0,0],
+  "Stride": [1,1],
+  "Dilation": [1,1],
+  "OutMaps": 21,
+  "Groups": 1,
+  "Weights": {"Type": "Int8", "Count": 10752},
+  "Bias": {"Type": "Float", "Count": 21},
+  "HasSparseWeights": 0,
+  "HasDynamicFilter": 0,
+  "HasDynamicBias": 0,
+  "HasResidual": 0,
+  "ConvXAsActInputIdx": -1,
+  "BiasAsActInputIdx": -1,
+  "ResAsActInputIdx": -1,
+  "Activation": "NONE",
+  "HasBias": 1,
+  "HasReLU": 0,
+  "TacticName": "maxwell_fp32_icudnn_int8x4_128x32_relu_interior_nn_v1",
+  "TacticValue": "0x8bae26e8bc714f38"
+},{
+  "Name": "Resize_140",
+  "LayerType": "Resize",
+  "Inputs": [
+  {
+    "Name": "516",
+    "Location": "Device",
+    "Dimensions": [1,21,65,65],
+    "Format/Datatype": "Row major linear FP32"
+  }],
+  "Outputs": [
+  {
+    "Name": "out",
+    "Location": "Device",
+    "Dimensions": [1,21,520,520],
+    "Format/Datatype": "Row major linear FP32"
+  }],
+  "ParameterType": "Resize",
+  "ResizeMode": "LINEAR",
+  "ResizeScales": [0, 0, 0, 0, 0, 0, 0, 0],
+  "ExcludeOutside": 0,
+  "CubicCoeff": -0.75,
+  "CoordTransform": "kHALF_PIXEL",
+  "ResizeSelector": "kUPPER",
+  "NNRounding": "kFLOOR",
+  "TacticValue": "0x0000000000000001"
+}],
+"Bindings": ["input"
+,"out"
+,"aux"
+]}
