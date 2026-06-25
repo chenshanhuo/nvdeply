@@ -39,8 +39,9 @@ output/
 vis_npy/
 data/*.json
 data/*.png
-*.npy
 *.engine
+*.onnx
+*.cache
 
 # OS
 .DS_Store
