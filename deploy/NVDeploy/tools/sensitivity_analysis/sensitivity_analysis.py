@@ -85,20 +85,24 @@ class EngineSensitivityAnalyzer:
                 shape = tuple(engine.get_binding_shape(i))
                 dtype = engine.get_binding_dtype(i)
                 print(f"{name}: {shape}, {dtype}", end="; ")
+
+                # 处理动态维度：将 -1 替换为默认值 1
+                actual_shape = tuple(1 if dim == -1 else dim for dim in shape)
+
                 if name == "images":
                     # Create realistic image data (normalized)
-                    data = np.random.uniform(0, 1, shape).astype(np.float32)
+                    data = np.random.uniform(0, 1, actual_shape).astype(np.float32)
                 elif "target_sizes" in name:
                     # Create realistic target sizes as int32
                     data = np.array([[640, 640]], dtype=np.int32)
                 else:
                     # Default: create data based on detected dtype
                     if dtype == trt.DataType.INT32:
-                        data = np.random.randint(0, 1000, shape).astype(np.int32)
+                        data = np.random.randint(0, 1000, actual_shape).astype(np.int32)
                     elif dtype == trt.DataType.FLOAT:
-                        data = np.random.rand(*shape).astype(np.float32)
+                        data = np.random.rand(*actual_shape).astype(np.float32)
                     else:
-                        data = np.random.randn(*shape).astype(np.float32)
+                        data = np.random.randn(*actual_shape).astype(np.float32)
                 input_data[name] = data
         print()
         return input_data

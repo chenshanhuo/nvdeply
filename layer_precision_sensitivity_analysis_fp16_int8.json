@@ -1,0 +1,201 @@
+{
+  "engine1_path": "deploy/NVDeploy/model/onnx/fcn-resnet50-12-marked_contain_fp16.engine",
+  "engine2_path": "deploy/NVDeploy/model/onnx/fcn-resnet50-12-marked_contain_int8.engine",
+  "final_outputs_comparison": {
+    "Conv_6_output": {
+      "cosine_similarity": 0.9999622702598572
+    },
+    "Conv_9_output": {
+      "cosine_similarity": 0.99940425157547
+    },
+    "Conv_11_output": {
+      "cosine_similarity": 0.9994516968727112
+    },
+    "Conv_13_output": {
+      "cosine_similarity": 0.9986072182655334
+    },
+    "Conv_14_output": {
+      "cosine_similarity": 0.9985546469688416
+    },
+    "Conv_17_output": {
+      "cosine_similarity": 0.9981237053871155
+    },
+    "Conv_19_output": {
+      "cosine_similarity": 0.9970529079437256
+    },
+    "Conv_21_output": {
+      "cosine_similarity": 0.9907913208007812
+    },
+    "Conv_24_output": {
+      "cosine_similarity": 0.9926299452781677
+    },
+    "Conv_26_output": {
+      "cosine_similarity": 0.9861557483673096
+    },
+    "Conv_28_output": {
+      "cosine_similarity": 0.9825835227966309
+    },
+    "Conv_31_output": {
+      "cosine_similarity": 0.9908695816993713
+    },
+    "Conv_33_output": {
+      "cosine_similarity": 0.9866754412651062
+    },
+    "Conv_35_output": {
+      "cosine_similarity": 0.98028963804245
+    },
+    "Conv_36_output": {
+      "cosine_similarity": 0.9959831237792969
+    },
+    "Conv_39_output": {
+      "cosine_similarity": 0.9979236721992493
+    },
+    "Conv_41_output": {
+      "cosine_similarity": 0.9976957440376282
+    },
+    "Conv_43_output": {
+      "cosine_similarity": 0.9940050840377808
+    },
+    "Conv_46_output": {
+      "cosine_similarity": 0.9906009435653687
+    },
+    "Conv_48_output": {
+      "cosine_similarity": 0.9879215359687805
+    },
+    "Conv_50_output": {
+      "cosine_similarity": 0.9825710654258728
+    },
+    "Conv_53_output": {
+      "cosine_similarity": 0.9807090759277344
+    },
+    "Conv_55_output": {
+      "cosine_similarity": 0.9708860516548157
+    },
+    "Conv_57_output": {
+      "cosine_similarity": 0.9707749485969543
+    },
+    "Conv_60_output": {
+      "cosine_similarity": 0.9807831645011902
+    },
+    "Conv_62_output": {
+      "cosine_similarity": 0.9743759036064148
+    },
+    "Conv_64_output": {
+      "cosine_similarity": 0.9683217406272888
+    },
+    "Conv_65_output": {
+      "cosine_similarity": 0.9880715608596802
+    },
+    "Conv_68_output": {
+      "cosine_similarity": 0.9869421720504761
+    },
+    "Conv_70_output": {
+      "cosine_similarity": 0.9882686734199524
+    },
+    "Conv_72_output": {
+      "cosine_similarity": 0.9879171848297119
+    },
+    "Conv_75_output": {
+      "cosine_similarity": 0.9792054891586304
+    },
+    "Conv_77_output": {
+      "cosine_similarity": 0.9667552709579468
+    },
+    "Conv_79_output": {
+      "cosine_similarity": 0.9679772257804871
+    },
+    "Conv_82_output": {
+      "cosine_similarity": 0.9753353595733643
+    },
+    "Conv_84_output": {
+      "cosine_similarity": 0.9680458903312683
+    },
+    "Conv_86_output": {
+      "cosine_similarity": 0.96787428855896
+    },
+    "Conv_89_output": {
+      "cosine_similarity": 0.9816944003105164
+    },
+    "Conv_91_output": {
+      "cosine_similarity": 0.9793013334274292
+    },
+    "Conv_93_output": {
+      "cosine_similarity": 0.9654372334480286
+    },
+    "Conv_96_output": {
+      "cosine_similarity": 0.9796414375305176
+    },
+    "Conv_98_output": {
+      "cosine_similarity": 0.9802756309509277
+    },
+    "Conv_100_output": {
+      "cosine_similarity": 0.9654663801193237
+    },
+    "Conv_103_output": {
+      "cosine_similarity": 0.9803383350372314
+    },
+    "Conv_105_output": {
+      "cosine_similarity": 0.9715100526809692
+    },
+    "Conv_107_output": {
+      "cosine_similarity": 0.9443029761314392
+    },
+    "Conv_108_output": {
+      "cosine_similarity": 0.9746517539024353
+    },
+    "Conv_111_output": {
+      "cosine_similarity": 0.9879980087280273
+    },
+    "Conv_113_output": {
+      "cosine_similarity": 0.9881749153137207
+    },
+    "Conv_115_output": {
+      "cosine_similarity": 0.9758363962173462
+    },
+    "Conv_118_output": {
+      "cosine_similarity": 0.991717517375946
+    },
+    "Conv_120_output": {
+      "cosine_similarity": 0.9835165143013
+    },
+    "Conv_122_output": {
+      "cosine_similarity": 0.9729401469230652
+    },
+    "Conv_125_output": {
+      "cosine_similarity": 0.9898775815963745
+    },
+    "Conv_127_output": {
+      "cosine_similarity": 0.9975709915161133
+    },
+    "out": {
+      "cosine_similarity": 0.9977412819862366
+    },
+    "Conv_141_output": {
+      "cosine_similarity": 0.9933549761772156
+    },
+    "Conv_143_output": {
+      "cosine_similarity": 0.9980458617210388
+    },
+    "aux": {
+      "cosine_similarity": 0.9984604120254517
+    }
+  },
+  "layer_sensitivity_analysis": {},
+  "sensitive_outputs": [
+    {
+      "name": "Conv_107_output",
+      "cosine_similarity": 0.9443029761314392
+    }
+  ],
+  "cosine_threshold": 0.95,
+  "num_perturbations": 10,
+  "config": {
+    "use_cosine": true,
+    "use_l2": false,
+    "use_mse": false,
+    "use_psr": false,
+    "use_pearson": false,
+    "max_outputs": null,
+    "skip_perturbation": true
+  }
+}
